@@ -11,13 +11,13 @@ public class PlayerMovement : MonoBehaviour {
 	private Vector3 moveVector;
 	private bool moving = false;
 
-	void OnEnable(){
-		Cardboard.SDK.OnTrigger += TriggerPulled;
-	}
-
-	void OnDisable(){
-		Cardboard.SDK.OnTrigger -= TriggerPulled;
-	}
+//	void OnEnable(){
+//		Cardboard.SDK.OnTrigger += TriggerPulled;
+//	}
+//
+//	void OnDisable(){
+//		Cardboard.SDK.OnTrigger -= TriggerPulled;
+//	}
 
 	void Start()
 	{
@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Update()
 	{
+		if (Cardboard.SDK.Triggered) {
+			moving = !moving;
+		}
 		if (moving) {
 			moveVector = (head.forward - Vector3.up * head.forward.y).normalized * speed;
 			//Debug.DrawRay (head.position, moveVector * 10);
@@ -41,9 +44,9 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-	void TriggerPulled() {
-		//Debug.Log("The trigger was pulled!");
-		moving = !moving;
-	}
+//	void TriggerPulled() {
+//		//Debug.Log("The trigger was pulled!");
+//		moving = !moving;
+//	}
 
 }
