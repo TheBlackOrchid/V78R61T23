@@ -28,7 +28,6 @@ public class Teleport : MonoBehaviour, ICardboardGazeResponder {
     Cardboard.SDK.UpdateState();
     if (Cardboard.SDK.BackButtonPressed) {
       Application.Quit();
-			Cardboard.SDK.
     }
   }
 
